@@ -3,6 +3,7 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.model.AlarmBody;
 import io.swagger.model.InlineResponse2001;
+import io.swagger.service.AlarmService;
 import io.swagger.utils.Alarm;
 import io.swagger.utils.AlarmFactory;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -31,17 +32,21 @@ public class AlarmApiController implements AlarmApi {
 
     private final AlarmFactory alarmFactory;
 
+    private final AlarmService alarmService;
+
     @org.springframework.beans.factory.annotation.Autowired
-    public AlarmApiController(ObjectMapper objectMapper, HttpServletRequest request, AlarmFactory alarmFactory) {
+    public AlarmApiController(ObjectMapper objectMapper, HttpServletRequest request, AlarmFactory alarmFactory, AlarmService alarmService) {
         this.objectMapper = objectMapper;
         this.request = request;
         this.alarmFactory = alarmFactory;
+        this.alarmService = alarmService;
     }
 
     public ResponseEntity<InlineResponse2001> createAlarm(@Parameter(in = ParameterIn.DEFAULT, description = "alarm's data", required = true, schema = @Schema()) @Valid @RequestBody AlarmBody body) {
-        Alarm alarm = alarmFactory.createAlarm(body);
+        int identifier = alarmFactory.createAlarm(body).getIdentifier();
+        alarmService.create(io.swagger.dao.Alarm.parse(body));
         return new ResponseEntity<InlineResponse2001>(
-                new InlineResponse2001().code(BigDecimal.valueOf(alarm.getIdentifier())).description("Alarm successfully created"),
+                new InlineResponse2001().code(BigDecimal.valueOf(identifier)).description("Alarm successfully created"),
                 HttpStatus.OK);
     }
 
