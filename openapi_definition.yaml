@@ -26,31 +26,36 @@ paths:
                 type: "string"
             application/json:
               schema:
-                type: "object"
-                properties:
-                  name:
-                    type: "string"
-                  value:
-                    type: "number"
+                $ref: '#/components/schemas/Alarm'
         "400":
           description: "Invalid status value"
   /alarm:
-    post:
+    get:
       tags:
-        - "learning-futures"
-      operationId: "createAlarm"
+        - "alarms"
+      operationId: "findAllAlarms"
       responses:
         200:
-          description: "successful operation"
+          description: "Return all the created alarms"
           content:
             application/json:
               schema:
-                type: "object"
-                properties:
-                  code:
-                    type: "number"
-                  description:
-                    type: "string"
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Alarm'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+        - "alarms"
+      operationId: "createAlarm"
+      responses:
+        200:
+          description: "Alarm activated"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlarmCreatedResponse'
       requestBody:
         description: "alarm's data"
         required: true
@@ -63,3 +68,34 @@ paths:
                   type: "number"
                 name:
                   type: "string"
+  /alarm/{alarmName}:
+    post:
+      parameters:
+        - in: path
+          name: alarmName
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: "Alarm activated"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlarmCreatedResponse'
+components:
+  schemas:
+    AlarmCreatedResponse:
+      type: "object"
+      properties:
+        code:
+          type: "number"
+        description:
+          type: "string"
+    Alarm:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        value:
+          type: "number"

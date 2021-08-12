@@ -10,20 +10,20 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse200
+ * Alarm
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-08-11T00:25:44.553Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-08-12T06:02:13.164Z[GMT]")
 
 
-public class InlineResponse200   {
+public class Alarm   {
   @JsonProperty("name")
   private String name = null;
 
   @JsonProperty("value")
   private BigDecimal value = null;
 
-  public InlineResponse200 name(String name) {
+  public Alarm name(String name) {
     this.name = name;
     return this;
   }
@@ -42,7 +42,7 @@ public class InlineResponse200   {
     this.name = name;
   }
 
-  public InlineResponse200 value(BigDecimal value) {
+  public Alarm value(BigDecimal value) {
     this.value = value;
     return this;
   }
@@ -64,16 +64,16 @@ public class InlineResponse200   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
-    return Objects.equals(this.name, inlineResponse200.name) &&
-        Objects.equals(this.value, inlineResponse200.value);
+    Alarm alarm = (Alarm) o;
+    return Objects.equals(this.name, alarm.name) &&
+        Objects.equals(this.value, alarm.value);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class InlineResponse200   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse200 {\n");
+    sb.append("class Alarm {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
@@ -96,7 +96,7 @@ public class InlineResponse200   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

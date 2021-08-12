@@ -21,6 +21,9 @@ public class AlarmService {
         return repository.findAll();
     }
 
+    public Alarm findByName(String name){
+        return repository.findByName(name);
+    }
     public void create(Alarm alarm){
         repository.save(alarm);
     }

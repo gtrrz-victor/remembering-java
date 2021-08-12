@@ -3,6 +3,8 @@ package io.swagger.dao;
 import io.swagger.model.AlarmBody;
 import org.springframework.data.annotation.Id;
 
+import java.math.BigDecimal;
+
 public class Alarm {
 
     @Id
@@ -27,6 +29,10 @@ public class Alarm {
 
     public static Alarm parse(AlarmBody alarm){
         return new Alarm(alarm.getName(),alarm.getDelay().intValue());
+    }
+
+    public io.swagger.model.Alarm toModel(){
+        return new io.swagger.model.Alarm().name(name).value(BigDecimal.valueOf(delay));
     }
 
 }

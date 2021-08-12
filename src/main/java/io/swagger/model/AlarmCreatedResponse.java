@@ -10,20 +10,20 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * InlineResponse2001
+ * AlarmCreatedResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-08-12T00:01:02.404Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-08-12T06:02:13.164Z[GMT]")
 
 
-public class InlineResponse2001   {
+public class AlarmCreatedResponse   {
   @JsonProperty("code")
   private BigDecimal code = null;
 
   @JsonProperty("description")
   private String description = null;
 
-  public InlineResponse2001 code(BigDecimal code) {
+  public AlarmCreatedResponse code(BigDecimal code) {
     this.code = code;
     return this;
   }
@@ -43,7 +43,7 @@ public class InlineResponse2001   {
     this.code = code;
   }
 
-  public InlineResponse2001 description(String description) {
+  public AlarmCreatedResponse description(String description) {
     this.description = description;
     return this;
   }
@@ -71,9 +71,9 @@ public class InlineResponse2001   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse2001 inlineResponse2001 = (InlineResponse2001) o;
-    return Objects.equals(this.code, inlineResponse2001.code) &&
-        Objects.equals(this.description, inlineResponse2001.description);
+    AlarmCreatedResponse alarmCreatedResponse = (AlarmCreatedResponse) o;
+    return Objects.equals(this.code, alarmCreatedResponse.code) &&
+        Objects.equals(this.description, alarmCreatedResponse.description);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class InlineResponse2001   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse2001 {\n");
+    sb.append("class AlarmCreatedResponse {\n");
     
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
