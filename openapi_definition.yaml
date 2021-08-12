@@ -1,0 +1,65 @@
+openapi: "3.0.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Hello World"
+  termsOfService: "http://swagger.io/terms/"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+servers:
+  - url: "http://localhost:8080/rest"
+paths:
+  /helloworld:
+    get:
+      tags:
+        - "helloworld"
+      summary: ""
+      description: ""
+      operationId: "readHelloWorld"
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            text/plain:
+              schema:
+                type: "string"
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  name:
+                    type: "string"
+                  value:
+                    type: "number"
+        "400":
+          description: "Invalid status value"
+  /alarm:
+    post:
+      tags:
+        - "learning-futures"
+      operationId: "createAlarm"
+      responses:
+        200:
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  code:
+                    type: "number"
+                  description:
+                    type: "string"
+      requestBody:
+        description: "alarm's data"
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                delay:
+                  type: "number"
+                name:
+                  type: "string"
